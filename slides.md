@@ -25,7 +25,7 @@ title: Consensus Dynamics
 :: left ::
 
 Consider an $n$-vertex graph $G = (V,E)$
-  - each vertex holds a **color** from $[k]$
+  - each vertex holds a **color (opinion)** from $[k]$
 
 <v-clicks>
 
@@ -76,18 +76,18 @@ layout: two-cols-title
 :: left ::
 
 **Update rule**:
-- Choose a neighbor u.a.r. and pull its opinion
+- Choose a (uniformly) random neighbor and pull its opinion
 
 <v-click at="+4" >
 
 **Properties**:
-- very simple
-  - just sees one random neighbor
+- simple & efficient
+  - just sees one neighbor
   - population protocol
 <v-click>
 
-- expected consensus time
-  - $\Theta(n)$ on any expanders
+- slow convergence
+  - $\Theta(n)$ on complete graphs
   - $O(n^3)$ on any connected graphs
 
 </v-click>
@@ -100,13 +100,8 @@ layout: two-cols-title
   <div class="absolute top-0, left-0">
     <Box shape='f-s-1-0' size="40px" color='sky-light' custom='m-10' v-click="1" v-motion  :initial="{x:0}" />
   </div>
-  <div class="absolute top-0, left-0">
-    <ArrowDraw v-click="2" v-motion
-    :initial="{ x: 80, opacity: 0}"
-    :enter="{ x: 80, y: 30, opacity: 1,
-      transition: {
-        duration: 500
-      } }"/>
+  <div class="relative top-0, left-0" >
+    <Arrow x1="100" y1="60" x2="200" y2="60" v-click="2" />
   </div>
   <div class="absolute top-0, left-0">
     <Box shape='f-s-1-0' size="40px" color='rose-light' custom='m-10' v-click="2" v-motion
@@ -134,17 +129,133 @@ color: navy-light
 
 Simulation of **synchronous** Voter on $K_{400}$ over $k=20$ colors
 
-<SlidevVideo controls autoplay>
+<SlidevVideo controls>
   <source src="./images/Voter.mp4" type="video/mp4" />
 </SlidevVideo>
 
+<div v-click.hide>
+
 - x-axis : color $i$
 - y-axis : # of vertices holding color $i$ (sorted at every round)
-  
-<v-click>
 
-<center>
-<AdmonitionType type="tip" color='yellow-light' title="Convergence is slow even on complete graphs." width="380px"/>
-</center>
+</div>
+
+<div v-after class="absolute left-56px bottom-86px">
+
+- Slow convergence
+
+</div>
+
+---
+color: navy-light
+title: Example II. 2-Choices
+layout: two-cols-title
+---
+
+:: title ::
+# Example II. 2-Choices
+
+:: left ::
+
+**Update rule**:
+- Choose two random neighbors (with replacement).
+- <span v-mark.underline.orange="+3">If the two have the same color, pull it.</span>
+- Otherwise, keep own color.
+
+<v-click at="+4" >
+
+**Properties**:
+- **laziness**: In the balanced state, color change occurs rarely.
+- **rich get richer**: Popular colors likely to become more popular.
 
 </v-click>
+
+:: right ::
+
+<div class="w-60 relative">
+  <div class="absolute top-0, left-0">
+    <Box shape='f-s-1-0' size="40px" color='sky-light' custom='m-10' v-click="1" v-motion  :initial="{x:0, y:50}" />
+  </div>
+  <div class="absolute top-0, left-0" >
+    <Arrow x1="100" y1="100" x2="200" y2="70" v-click="2" />
+  </div>
+  <div class="absolute top-0, left-0">
+    <Box shape='f-s-1-0' size="40px" color='rose-light' custom='m-10' v-click="2" v-motion
+      :initial="{x:180, y:0, opacity: 0}"
+      :enter="{ x:180, y:0, opacity: 1,
+        transition: { delay: 300, duration: 500 } }" />
+  </div>
+  <div class="absolute top-0, left-0" >
+    <Arrow x1="100" y1="120" x2="200" y2="140" v-click="2" />
+  </div>
+  <div class="absolute top-0, left-0">
+    <Box shape='f-s-1-0' size="40px" color='rose-light' custom='m-10' v-click="2" v-motion
+      :initial="{x:180, y:90, opacity: 0}"
+      :enter="{ x:180, y:90, opacity: 1,
+        transition: { delay: 300, duration: 500 } }" />
+  </div>
+
+  <div class="absolute top-0, left-0">
+    <Box shape='f-s-1-0' size="40px" color='rose-light' custom='m-10' v-click="3" v-motion
+      :initial="{x:0, y:50, opacity: 0}"
+      :enter="{ x:0, y:50, opacity: 1,
+        transition: {
+          duration: 500
+        }
+      }" />
+  </div>
+</div>
+
+
+
+<div class="w-60 absolute">
+  <div class="absolute top-0, left-0">
+    <Box shape='f-s-1-0' size="40px" color='sky-light' custom='m-10' v-click="1" v-motion  :initial="{x:0, y:250}" />
+  </div>
+  <div class="absolute top-0, left-0" >
+    <Arrow x1="100" y1="300" x2="200" y2="270" v-click="2" />
+  </div>
+  <div class="absolute top-0, left-0">
+    <Box shape='f-s-1-0' size="40px" color='rose-light' custom='m-10' v-click="2" v-motion
+      :initial="{x:180, y:200, opacity: 0}"
+      :enter="{ x:180, y:200, opacity: 1,
+        transition: { delay: 300, duration: 500 } }" />
+  </div>
+  <div class="absolute top-0, left-0" >
+    <Arrow x1="100" y1="320" x2="200" y2="340" v-click="2" />
+  </div>
+  <div class="absolute top-0, left-0">
+    <Box shape='f-s-1-0' size="40px" color='lime-light' custom='m-10' v-click="2" v-motion
+      :initial="{x:180, y:290, opacity: 0}"
+      :enter="{ x:180, y:290, opacity: 1,
+        transition: { delay: 300, duration: 500 } }" />
+  </div>
+</div>
+
+
+---
+color: navy-light
+---
+
+# Simulation of 2-Choices
+
+Simulation of **synchronous** 2-Choices on $K_{400}$ over $k=20$ colors
+
+<SlidevVideo controls autoplay>
+  <source src="./images/Bo2.mp4" type="video/mp4" />
+</SlidevVideo>
+
+<div v-click.hide>
+
+- x-axis : color $i$
+- y-axis : # of vertices holding color $i$ (sorted at every round)
+
+</div>
+
+<div v-after class="absolute left-56px bottom-66px">
+
+- Balanced state: very stable
+- Unbalanced state: rush to convergence
+
+</div>
+

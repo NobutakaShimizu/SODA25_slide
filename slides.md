@@ -9,16 +9,36 @@ defaults:
   layout: 'default'
 ---
 # Asynchronous 3-Majority Dynamics with Many Opinions
+
+<div class="grid grid-cols-2 gap-4 place-items-center h-56">
+
+<div>
+
 - Colin Cooper (King's College London)
 - Frederik Mallman-Trenn (King's College London)
 - Tomasz Radzik (King's College London)
 - [**Nobutaka Shimizu**](https://sites.google.com/view/nobutaka-shimizu/home) (Institute of Science Tokyo)
 - Takeharu Shiraga (Chuo University)
 
-<div class="text-right text-blue-500/70 text-sm">
+</div>
+<div>
 
-SODA25 ([arXiv link](https://arxiv.org/abs/2410.11172))
+  <QRCode value="https://nobutakashimizu.github.io/SODA25_slide/" :size="120" render-as="svg"/>
 
+<div class="text-center text-blue-500 text-sm">
+
+  $\uparrow$ [slide link](https://nobutakashimizu.github.io/SODA25_slide/)
+
+  [arXiv link](https://arxiv.org/abs/2410.11172)
+
+</div>
+</div>
+
+</div>
+
+:: note ::
+<div class="text-slate-500">
+  @SODA2025
 </div>
 
 ---

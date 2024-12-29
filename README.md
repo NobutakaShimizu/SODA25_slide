@@ -1,11 +1,7 @@
-# Welcome to [Slidev](https://github.com/slidevjs/slidev)!
 
-To start the slide show:
-
-- `npm install`
-- `npm run dev`
-- visit <http://localhost:3030>
-
-Edit the [slides.md](./slides.md) to see the changes.
-
-Learn more about Slidev at the [documentation](https://sli.dev/).
+This is the slide of **Asynchronous 3-Majority Dynamics with Many Opinions** at SODA25 by
+- Colin Cooper (King's College London)
+- Frederik Mallman-Trenn (King's College London)
+- Tomasz Radzik (King's College London)
+- Nobutaka Shimizu (Institute of Science Tokyo)
+- Takeharu Shiraga (Chuo University)

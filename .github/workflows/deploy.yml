@@ -32,7 +32,7 @@ jobs:
         run: nci
 
       - name: Install neversink
-        run: nr install slidev-theme-neversink
+        run: npm install slidev-theme-neversink
 
       - name: Build
         run: nr build --base /${{github.event.repository.name}}/

@@ -7,13 +7,6 @@ title: Asynchronous 3-Majority Dynamics with Many Opinions
 theme: neversink
 favicon: './images/avatar-icon.png'
 download: true
-exportFilename: async_3maj
-export:
-  format: pdf
-  timeout: 30000
-  dark: false
-  withClicks: false
-  withToc: false
 defaults:
   layout: 'default'
 author: Nobutaka Shimizu

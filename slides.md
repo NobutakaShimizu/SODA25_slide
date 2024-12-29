@@ -148,7 +148,7 @@ layout: two-cols-title
 - consensus time $\approx$ hitting time of random walk
 
   - $\Theta(n)$ on complete graphs (sync) <span class="text-pink-600"> <a href="https://epubs.siam.org/doi/10.1137/120900368">[Cooper, Elsässer, Ono, Radzik, SIDMA(2013)] </a></span>
-  - $\Theta(n^2)$ on complete graphs (sync) <span class="text-pink-600"> <a href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ICALP.2016.144"> [Cooper, Rivera, ICALP14] </a></span>
+  - $\Theta(n^2)$ on complete graphs (async) <span class="text-pink-600"> <a href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ICALP.2016.144"> [Cooper, Rivera, ICALP14] </a></span>
 
 </v-click>
 
@@ -199,43 +199,36 @@ layout: two-cols-title
 - <span v-mark.underline.orange="+3">If the two have the same color, pull it.</span>
 - Otherwise, keep own color.
 
-<v-click at="+4" >
-
-**Properties**:
-- Colors change rarely in the balanced state.
-- **rich get richer**: Popular colors likely to become more popular.
-
-</v-click>
 
 :: right ::
 
 <div class="w-60 relative">
   <div class="absolute top-0, left-0">
-    <Box shape='f-s-1-0' size="40px" color='sky-light' custom='m-10' v-click="1" v-motion  :initial="{x:0, y:50}" />
+    <Box shape='f-s-1-0' size="40px" color='sky-light' custom='m-10' v-click="1" v-motion  :initial="{x:0, y:0}" />
   </div>
   <div class="absolute top-0, left-0" >
-    <Arrow x1="100" y1="100" x2="200" y2="70" v-click="2" />
+    <Arrow x1="100" y1="50" x2="200" y2="20" v-click="2" />
   </div>
   <div class="absolute top-0, left-0">
     <Box shape='f-s-1-0' size="40px" color='rose-light' custom='m-10' v-click="2" v-motion
-      :initial="{x:180, y:0, opacity: 0}"
-      :enter="{ x:180, y:0, opacity: 1,
+      :initial="{x:180, y:-50, opacity: 0}"
+      :enter="{ x:180, y:-50, opacity: 1,
         transition: { delay: 300, duration: 500 } }" />
   </div>
   <div class="absolute top-0, left-0" >
-    <Arrow x1="100" y1="120" x2="200" y2="140" v-click="2" />
+    <Arrow x1="100" y1="70" x2="200" y2="90" v-click="2" />
   </div>
   <div class="absolute top-0, left-0">
     <Box shape='f-s-1-0' size="40px" color='rose-light' custom='m-10' v-click="2" v-motion
-      :initial="{x:180, y:90, opacity: 0}"
-      :enter="{ x:180, y:90, opacity: 1,
+      :initial="{x:180, y:40, opacity: 0}"
+      :enter="{ x:180, y:40, opacity: 1,
         transition: { delay: 300, duration: 500 } }" />
   </div>
 
   <div class="absolute top-0, left-0">
     <Box shape='f-s-1-0' size="40px" color='rose-light' custom='m-10' v-click="3" v-motion
-      :initial="{x:0, y:50, opacity: 0}"
-      :enter="{ x:0, y:50, opacity: 1,
+      :initial="{x:0, y:0, opacity: 0}"
+      :enter="{ x:0, y:0, opacity: 1,
         transition: {
           duration: 500
         }
@@ -247,27 +240,38 @@ layout: two-cols-title
 
 <div class="w-60 absolute">
   <div class="absolute top-0, left-0">
-    <Box shape='f-s-1-0' size="40px" color='sky-light' custom='m-10' v-click="1" v-motion  :initial="{x:0, y:250}" />
+    <Box shape='f-s-1-0' size="40px" color='sky-light' custom='m-10' v-click="1" v-motion  :initial="{x:0, y:200}" />
   </div>
   <div class="absolute top-0, left-0" >
-    <Arrow x1="100" y1="300" x2="200" y2="270" v-click="2" />
+    <Arrow x1="100" y1="250" x2="200" y2="220" v-click="2" />
   </div>
   <div class="absolute top-0, left-0">
     <Box shape='f-s-1-0' size="40px" color='rose-light' custom='m-10' v-click="2" v-motion
-      :initial="{x:180, y:200, opacity: 0}"
-      :enter="{ x:180, y:200, opacity: 1,
+      :initial="{x:180, y:150, opacity: 0}"
+      :enter="{ x:180, y:150, opacity: 1,
         transition: { delay: 300, duration: 500 } }" />
   </div>
   <div class="absolute top-0, left-0" >
-    <Arrow x1="100" y1="320" x2="200" y2="350" v-click="2" />
+    <Arrow x1="100" y1="270" x2="200" y2="300" v-click="2" />
   </div>
   <div class="absolute top-0, left-0">
     <Box shape='f-s-1-0' size="40px" color='lime-light' custom='m-10' v-click="2" v-motion
-      :initial="{x:180, y:300, opacity: 0}"
-      :enter="{ x:180, y:300, opacity: 1,
+      :initial="{x:180, y:250, opacity: 0}"
+      :enter="{ x:180, y:250, opacity: 1,
         transition: { delay: 300, duration: 500 } }" />
   </div>
 </div>
+
+:: default ::
+
+<v-click at="+4" >
+
+**Properties**:
+- **rich get richer**: The popular becomes more popular.
+- Colors change rarely in the balanced state.
+  - consensus time can be $\Omega(n/\log n)$ on $K_n$ if $k=\frac{n}{\log n}$ <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/3087801.3087817">[Berenbrink, Clementi, Elsässer, Kling, Mallmann-Trenn, Natale, PODC17]</a></span>
+
+</v-click>
 
 
 ---
@@ -291,7 +295,7 @@ Simulation of **synchronous** 2-Choices on $K_{400}$ over $k=20$ colors
 
 <div v-after class="absolute left-56px bottom-66px">
 
-- Balanced state: very stable
+- Balanced state: color change is rare
 - Unbalanced state: rush to convergence
 
 </div>

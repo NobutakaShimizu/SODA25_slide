@@ -12,8 +12,14 @@ defaults:
 - Colin Cooper (King's College London)
 - Frederik Mallman-Trenn (King's College London)
 - Tomasz Radzik (King's College London)
-- [Nobutaka Shimizu](https://sites.google.com/view/nobutaka-shimizu/home) (Institute of Science Tokyo)
+- [**Nobutaka Shimizu**](https://sites.google.com/view/nobutaka-shimizu/home) (Institute of Science Tokyo)
 - Takeharu Shiraga (Chuo University)
+
+<div class="text-right text-blue-500/70 text-sm">
+
+SODA25 ([arXiv link](https://arxiv.org/abs/2410.11172))
+
+</div>
 
 ---
 color: navy-light

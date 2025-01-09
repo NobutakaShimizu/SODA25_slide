@@ -55,7 +55,7 @@ title: Consensus Dynamics
 
 :: left ::
 
-Consider an $n$-vertex graph $G = (V,E)$
+$n$-vertex graph $G = (V,E)$
   - each vertex holds a **color (opinion)** from $[k]$
 
 <v-clicks>
@@ -69,7 +69,7 @@ This work focus on complete graphs $K_n$.
 </v-clicks>
 
 :: right ::
-<SlidevVideo controls>
+<SlidevVideo controls width="350">
   <source src="./images/simulation_movie.mp4" type="video/mp4" />
 </SlidevVideo>
 
@@ -120,6 +120,15 @@ layout: two-cols-title
 **Update rule**:
 - Pull the opinion of a random neighbor.
 
+<v-click at="+4" >
+
+**Properties**:
+- simple & efficient
+  - just sees one neighbor
+  - async can be implemented in population protocol
+
+</v-click>
+
 :: right ::
 
 <div class="w-60 relative">
@@ -146,49 +155,40 @@ layout: two-cols-title
   </div>
 </div>
 
-:: default ::
-<v-click at="+4" >
-
-**Properties**:
-- simple & efficient
-  - just sees one neighbor
-  - async can be implemented in population protocol
-<v-click>
-
-- consensus time $\approx$ hitting time of random walk
-  - $O(n^3)$ on arbitrary connected graph
-</v-click>
-
-</v-click>
-
-
 
 
 ---
 color: navy-light
+layout: two-cols-title
 ---
 
-# Simulation of Voter
+:: title ::
 
-Simulation of **synchronous** Voter on $K_{400}$ over $k=20$ colors
+# Simulation of Sync Voter on $K_{400}$
 
-<SlidevVideo controls autoplay>
+:: right ::
+<div class="absolute top-20">
+<SlidevVideo controls width="350">
   <source src="./images/Voter.mp4" type="video/mp4" />
 </SlidevVideo>
+<div style="text-align:center">
 
-<div v-click.hide>
-
-- x-axis : color $i$
-- y-axis : # of vertices holding color $i$ (sorted at every round)
+$20$ colors
 
 </div>
 
-<div v-after class="absolute left-56px bottom-66px">
-
-- population changes gradually
-- convergence is slow
-
 </div>
+
+:: left ::
+
+- Pie chart of fractions of colors
+
+<v-clicks>
+
+- convergence is slow even if 90% are purple
+- consensus time = $\Theta(n)$ on $K_n$ (sync)
+
+</v-clicks>
 
 ---
 color: navy-light
@@ -206,6 +206,13 @@ layout: two-cols-title
 - <span v-mark.underline.orange="+3">If the two have the same color, pull it.</span>
 - Otherwise, keep own color.
 
+<v-click at="+4" >
+
+**Properties**:
+- **rich get richer**: The popular becomes more popular.
+- Colors change rarely in the balanced state.
+
+</v-click>
 
 :: right ::
 
@@ -269,43 +276,60 @@ layout: two-cols-title
   </div>
 </div>
 
-:: default ::
 
-<v-click at="+4" >
-
-**Properties**:
-- **rich get richer**: The popular becomes more popular.
-- Colors change rarely in the balanced state.
-  - consensus time can be $\Omega(n/\log n)$ on $K_n$ if $k=\frac{n}{\log n}$ <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/3087801.3087817">[Berenbrink, Clementi, Elsässer, Kling, Mallmann-Trenn, Natale, PODC17]</a></span>
-
-</v-click>
 
 
 ---
 color: navy-light
+layout: two-cols-title
 ---
 
-# Simulation of 2-Choices
+:: title ::
 
-Simulation of **synchronous** 2-Choices on $K_{400}$ over $k=20$ colors
+# Simulation of Sync 2-Choices on $K_{400}$
 
-<SlidevVideo controls autoplay loop>
+:: right ::
+
+<div>
+<div v-click-hide="3" class="absolute top-20">
+<SlidevVideo controls width="350">
   <source src="./images/Bo2.mp4" type="video/mp4" />
 </SlidevVideo>
+<div style="text-align:center">
 
-<div v-click.hide>
+$20$ colors
 
-- x-axis : color $i$
-- y-axis : # of vertices holding color $i$ (sorted at every round)
+</div>
+</div>
+<v-clicks at="3">
+<div class="absolute top-20">
+<SlidevVideo controls width="350">
+  <source src="./images/Bo2_many_color.mp4" type="video/mp4" />
+</SlidevVideo>
+
+<div style="text-align:center">
+
+$100$ colors
 
 </div>
 
-<div v-after class="absolute left-56px bottom-66px">
-
-- Balanced state: color change is rare
-- Unbalanced state: rush to convergence
-
 </div>
+</v-clicks>
+</div>
+
+
+:: left ::
+
+- Pie chart of fractions of colors
+
+<v-clicks>
+
+- Early phase: keep balanced
+- After symmetry breaking: rush to convergence
+  - rich get richer
+- consensus time can be $\Omega(n/\log n)$ on $K_n$ if $k\approx n$ <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/3087801.3087817">[Berenbrink et al. PODC17]</a></span>
+
+</v-clicks>
 
 
 
@@ -419,29 +443,56 @@ layout: two-cols-title
 
 ---
 color: navy-light
+layout: two-cols-title
 ---
+:: title ::
+# Simulation of Sync 3-Majority on $K_{400}$
 
-# Simulation of 3-Majority
+:: right ::
 
-Simulation of **synchronous** 3-Majority on $K_{400}$ over $k=20$ colors
-
-<SlidevVideo controls autoplay loop>
+<div>
+<div v-click-hide="3" class="absolute top-20">
+<SlidevVideo controls width="350">
   <source src="./images/Bo3.mp4" type="video/mp4" />
 </SlidevVideo>
+<div style="text-align:center">
 
-<div v-click.hide>
+$20$ colors
 
-- x-axis : color $i$
-- y-axis : # of vertices holding color $i$ (sorted at every round)
+</div>
+</div>
+<v-clicks at="3">
+<div class="absolute top-20">
+<SlidevVideo controls width="350">
+  <source src="./images/Bo3_many_color.mp4" type="video/mp4" />
+</SlidevVideo>
+<div style="text-align:center">
+
+$400$ colors
 
 </div>
 
-<div v-after class="absolute left-56px bottom-66px">
-
-- Balanced state: Behaves like **Voter**, which breaks symmetry
-- Unbalanced state: fast convergence due to **2-Choices**
-
 </div>
+</v-clicks>
+</div>
+
+
+:: left ::
+
+- Pie chart of fractions of colors
+
+<v-clicks>
+
+- Early phase: Behaves like **Voter**
+- After symmetry breaking: Behaves like **2-Choices**
+
+</v-clicks>
+<v-clicks at="3">
+
+- Fast convergence even if $k=n$
+  - best of both worlds!
+
+</v-clicks>
 
 ---
 color: navy-light
@@ -450,13 +501,11 @@ title: What is Known?
 # 3-Majority on $K_n$ (synchronous)
 
 -  <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/2612669.2612677">[Becchetti, Clementi, Natale, Pasquale, Silvestri, Trevisan, SPAA14] </a></span> proved $T_{\mathrm{cons}} = O(k\log n)$ for $k \ll n^{1/3}$ if there is a large gap between the most popular opinion and the other opinions.
-   - "rich get richer" property of 3-Majority (in the unbalanced state)
    - They also proved $T_{\mathrm{cons}} = \Omega(k\log n)$ if $k\ll n^{1/4}$ the initial state is balanced.
 
 <v-clicks>
 
 - <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.5555/2884435.2884481">[Becchetti, Clementi, Natale, Pasquale, and Trevisan, SODA16]</a></span> proved $T_{\mathrm{cons}}=\widetilde{O}(k^3)$ for $k\le n^{1/3-\varepsilon}$ for **any** initial state
-  - They asked for $O(k\log n)$ bound.
 - <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/3212734.3212738">[Ghaffari and Lengler, PODC18]</a></span> proved $O(k\log n)$ for $k\ll n^{1/3}$.
 - <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/3087801.3087817">[Berenbrink, Clementi, Elsässer, Kling, Mallmann-Trenn, Natale, PODC17]</a></span> proved that # of remaining opinions will be $O(n\log n/ T)$ after $T$ rounds w.h.p.
 
@@ -520,7 +569,7 @@ layout: two-cols-title
 
   <div class="ml-4 mt-4">
 
-  **Question**: Fill the "jump" at $k\approx n^{1/3}$ and confirm the heuristic argument.
+  **Question**: Fill the "jump" at $k\approx n^{1/3}$.
 
   </div>
 </div>
@@ -611,7 +660,7 @@ layout: two-cols-title
 
 <v-clicks>
 
-- Analogous result of <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/3087801.3087817">[Berenbrink, et al. PODC17]</a></span> for async models.
+- Analogous result of <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/3087801.3087817">[Berenbrink et al. PODC17]</a></span> for async models.
   - Their proof crucially relies on synchronicity
 - omitted in this talk
 

@@ -84,15 +84,21 @@ Two kinds update schedules: At every round
 <v-clicks>
 
   - **synchronous (parallel)**: all vertices simultaneously update their colors
-  - <span v-mark.underline.orange="+4"> **asynchronous (sequential)**: one random vertex updates its color </span>
+  <div align="center">
+
+  ![sync](./images/sync.drawio.svg)
+
+  </div>
+
+  - <span v-mark.underline.orange="+6"> **asynchronous (sequential)**: one random vertex updates its color </span>
+  <div align="center">
+
+  ![async](./images/async.drawio.svg)
+
+  </div>
+
+
   - Intuitively, (consensus time in sync) $\approx$ (consensus time in async $\times n$)
-
-
-<div align="center">
-
-![sync and async](./images/schedule.drawio.svg)
-
-</div>
 
 </v-clicks>
 
@@ -150,10 +156,7 @@ layout: two-cols-title
 <v-click>
 
 - consensus time $\approx$ hitting time of random walk
-
-  - $\Theta(n)$ on complete graphs (sync) <span class="text-pink-600"> <a href="https://epubs.siam.org/doi/10.1137/120900368">[Cooper, Elsässer, Ono, Radzik, SIDMA(2013)] </a></span>
-  - $\Theta(n^2)$ on complete graphs (async) <span class="text-pink-600"> <a href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ICALP.2016.144"> [Cooper, Rivera, ICALP16] </a></span>
-
+  - $O(n^3)$ on arbitrary connected graph
 </v-click>
 
 </v-click>

@@ -86,9 +86,13 @@ Two kinds update schedules: At every round
   - **synchronous (parallel)**: all vertices simultaneously update their colors
   - <span v-mark.underline.orange="+4"> **asynchronous (sequential)**: one random vertex updates its color </span>
   - Intuitively, (consensus time in sync) $\approx$ (consensus time in async $\times n$)
-    - relies on the protocol
-    - ${}^\exists$protocol that exhibits an exponential gap <span class="text-pink-600"> <a href="https://epubs.siam.org/doi/10.1137/1.9781611977912.144">[Becchetti, Clementi, Pasquale, Trevisan, Vacus, Ziccardi, SODA24] </a> </span>
 
+
+<div align="center">
+
+![sync and async](./images/schedule.drawio.svg)
+
+</div>
 
 </v-clicks>
 

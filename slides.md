@@ -148,7 +148,7 @@ layout: two-cols-title
 - consensus time $\approx$ hitting time of random walk
 
   - $\Theta(n)$ on complete graphs (sync) <span class="text-pink-600"> <a href="https://epubs.siam.org/doi/10.1137/120900368">[Cooper, Elsässer, Ono, Radzik, SIDMA(2013)] </a></span>
-  - $\Theta(n^2)$ on complete graphs (async) <span class="text-pink-600"> <a href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ICALP.2016.144"> [Cooper, Rivera, ICALP14] </a></span>
+  - $\Theta(n^2)$ on complete graphs (async) <span class="text-pink-600"> <a href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ICALP.2016.144"> [Cooper, Rivera, ICALP16] </a></span>
 
 </v-click>
 

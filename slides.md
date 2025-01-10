@@ -90,7 +90,8 @@ Two kinds update schedules: At every round
 
   </div>
 
-  - <span v-mark.underline.orange="+6"> **asynchronous (sequential)**: one random vertex updates its color </span>
+  - **asynchronous (sequential)**: one random vertex updates its color
+
   <div align="center">
 
   ![async](./images/async.drawio.svg)
@@ -494,6 +495,7 @@ $400$ colors
 
 </v-clicks>
 
+
 ---
 color: navy-light
 title: What is Known?
@@ -511,20 +513,21 @@ title: What is Known?
 
 </v-clicks>
 
-<v-click>
+<div v-click>
+  From results above, we have
 
-From results above, we have
+  $$
+    \begin{align*}
+      T_{\mathrm{cons}} \le \widetilde{O}(1)\cdot \begin{cases}
+        k	& \text{if }k \ll n^{1/3},\\
+        n^{2/3} & \text{otherwise}
+      \end{cases}
+    \end{align*}
+  $$
+  
+</div>
 
-$$
-  \begin{align*}
-    T_{\mathrm{cons}} \le \widetilde{O}(1)\cdot \begin{cases}
-      k	& \text{if }k \ll n^{1/3},\\
-      n^{2/3} & \text{otherwise}
-    \end{cases}
-  \end{align*}
-$$
 
-</v-click>
 
 ---
 color: navy-light

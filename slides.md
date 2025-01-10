@@ -639,7 +639,7 @@ layout: two-cols-title
 ---
 
 :: title ::
-# Two Main Lemmas
+# Two Technical Lemmas
 
 :: left ::
 
@@ -655,22 +655,23 @@ layout: two-cols-title
 
 <v-clicks>
 
-- For sync, previous works consider $k \ll n^{1/3}$.
-  - improvement of range of $k$ in async
-- Key tool: Freedman's inequality
-  - Bernstein-type concentration for martingales
+- "rich get richer" due to 2-Choices-like behavior
+- For sync, previous works consider $k \ll n^{1/3}$
+- Most technical part
+  - Key tool: Freedman's inequality
+  
 </v-clicks>
 
 :: right ::
 
 
-<div class="rounded-lg border-1 border-green-600 bg-lime-100">
+<div class="rounded-lg border-1 border-green-600 bg-lime-100" v-click>
 
   <div class="ml-4">
 
   **Lemma 2.**
 
-  After $T$ rounds, the number of remaining opinions is at most $O(n^2\log n/T)$ w.h.p.
+  After $T$ rounds, the number of remaining opinions is at most $O(n^2\log n/T)$.
 
   </div>
 
@@ -678,12 +679,21 @@ layout: two-cols-title
 
 <v-clicks>
 
-- Analogous result of <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/3087801.3087817">[Berenbrink et al. PODC17]</a></span> for async models.
+- Symmetry breaking due to Voter-like behavior
+- Analogous result of <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/3087801.3087817">[Berenbrink et al. PODC17]</a></span> for sync
   - Their proof crucially relies on synchronicity
 - omitted in this talk
 
-
 </v-clicks>
+
+:: default ::
+
+<v-click>
+
+**Proof of Theorem**: Apply Lemma 2 for $T=n^{1.5}$ and then Lemma 1.
+
+</v-click>
+
 
 ---
 color: navy-light
@@ -694,18 +704,18 @@ title: proof overview
 
 <v-clicks>
 
-- Let $\alpha_t(i) \in[0,1]$ be the fraction of vertices holding color $i$.
-  - We treat $\alpha_t = (\alpha_t(1),\dots,\alpha_t(k)) \in [0,1]^k$ as a vector.
-  - Note that $\sum_i \alpha_t(i) = 1$.
-  - We consider the $\ell^2$-norm: $\|\alpha_t\|^2 = \sum_{i\in[k]}\alpha_t(i)^2$.
+- Let $\alpha_t(i) \in[0,1]$ be the fraction of vertices holding color $i$
+  - population vector: $\alpha_t = (\alpha_t(1),\dots,\alpha_t(k)) \in [0,1]^k$
+  - $\ell^2$-norm: $\|\alpha_t\|^2 = \sum_{i\in[k]}\alpha_t(i)^2$
 - Conditioned on Round $t-1$, we can calculate the expectation $\mathbb{E}_{t-1}[\alpha_t(i)]$ as follows:
-  - $\mathbb{E}_{t-1}[\alpha_t(i)] = \alpha_{t-1}(i)(1+\alpha_{t-1}(i) - \|\alpha_{t-1}\|^2)$ (2-Choices and 3-Majority)
-  - $\mathbb{E}_{t-1}[\alpha_t(i)] = \alpha_{t-1}(i)$ (Voter)
-- In the synchronous model, $\alpha_t(i)$ can be written as the sum of $n$ independent random variables:
+  - $\mathbb{E}_{t-1}[\alpha_t(i)] = \alpha_{t-1}(i)(1+\alpha_{t-1}(i) - \|\alpha_{t-1}\|^2)$ (sync)
+  - $\mathbb{E}_{t-1}[\alpha_t(i)] = \alpha_{t-1}(i)\left(1+\frac{\alpha_{t-1}(i) - \|\alpha_{t-1}\|^2}{n}\right)$ (async)
+
+- In sync, $\alpha_t(i)$ = sum of $n$ i.i.d. indicators:
   
   $$
     \begin{align*}
-      \alpha_t(i)= \frac{1}{n} \sum_{u\in V}\mathbb{1}_{\mathrm{color}_t(u) = i}.
+      \alpha_t(i)= \frac{1}{n} \sum_{u\in V}\mathbb{1}_{\mathrm{color}_t(u) = i}
     \end{align*}
   $$
   
@@ -725,14 +735,18 @@ title: proof overview
   - likely to increase by $\Theta\left(\frac{1}{k^2}\right)$ (**additive drift**)
 - By Central Limit Theorem, we have
 
-$${1|2}
+<v-clicks>
+
+$${1|all}
 \begin{aligned}
   \alpha_t(i) &= \mathbb{E}_{t-1}[\alpha_t(i)] \underbrace{\pm O \left( \frac{1}{\sqrt{kn}} \right)}_{\text{standard deviation}} \\
               &= \alpha_{t-1}(i) + \underbrace{\Theta\left(\frac{1}{k^2} \right)}_{\text{additive drift}} \pm O \left( \frac{1}{\sqrt{kn}} \right).
 \end{aligned}
 $$
 
-- To mitigate the effect of the standard deviation, we need $\frac{1}{k^2} \gg \frac{1}{\sqrt{kn}}$; thus $k \ll n^{1/3}$.
+</v-clicks>
+
+- We need drift $\gg$ standard deviation: $\frac{1}{k^2} \gg \frac{1}{\sqrt{kn}}$ (thus $k \ll n^{1/3}$).
   - this obstacle is specific to synchronous models
 
 </v-clicks>

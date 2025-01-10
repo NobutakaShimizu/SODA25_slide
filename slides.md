@@ -507,13 +507,22 @@ title: What is Known?
 
 - <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.5555/2884435.2884481">[Becchetti, Clementi, Natale, Pasquale, and Trevisan, SODA16]</a></span> proved $T_{\mathrm{cons}}=\widetilde{O}(k^3)$ for $k\le n^{1/3-\varepsilon}$ for **any** initial state
 - <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/3212734.3212738">[Ghaffari and Lengler, PODC18]</a></span> proved $O(k\log n)$ for $k\ll n^{1/3}$.
-- <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/3087801.3087817">[Berenbrink, Clementi, Elsässer, Kling, Mallmann-Trenn, Natale, PODC17]</a></span> proved that # of remaining opinions will be $O(n\log n/ T)$ after $T$ rounds w.h.p.
+- <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/3087801.3087817">[Berenbrink, Clementi, Elsässer, Kling, Mallmann-Trenn, Natale, PODC17]</a></span> proved that # of remaining opinions will be $\widetilde{O}(n/ T)$ after $T$ rounds.
 
 </v-clicks>
 
 <v-click>
 
-From results above, we have $T_{\mathrm{cons}} = \widetilde{O}(\min(k,n^{2/3}))$ for any $k$.
+From results above, we have
+
+$$
+  \begin{align*}
+    T_{\mathrm{cons}} \le \widetilde{O}(1)\cdot \begin{cases}
+      k	& \text{if }k \ll n^{1/3},\\
+      n^{2/3} & \text{otherwise}
+    \end{cases}
+  \end{align*}
+$$
 
 </v-click>
 
@@ -527,7 +536,16 @@ title: What is Known?
   - <span class="text-pink-600"><a href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.OPODIS.2022.23">[Berenbrink, Coja-Oghlan, Gebhard, Hahn-Klimroth, Kaaser, Rau, OPODIS22]</a></span> confirmed this: $T_{\mathrm{cons}} = O(n\log n)$ if $k=2$.
 - The case $k\gg 1$ is unexplored yet.
 
-If we believe the heuristics, we have $T_{\mathrm{cons}} = \widetilde{O}(n \cdot \min(k,n^{2/3}))$ for any $k$.
+If we believe the heuristics, we have 
+
+$$
+  \begin{align*}
+    T_{\mathrm{cons}} \le \widetilde{O}(n)\cdot \begin{cases}
+      k	& \text{if }k \ll n^{1/3},\\
+      n^{2/3} & \text{otherwise}
+    \end{cases}
+  \end{align*}
+$$
 
 
 ---
@@ -554,7 +572,7 @@ layout: two-cols-title
 
 :: right ::
 
-<div align="center" v-click>
+<div align="center">
 
 ![plot of consensus time](./images/tcons_plot_async.svg)
   <div class="text-gray-500">
@@ -562,14 +580,14 @@ layout: two-cols-title
   bound for asynchronous model <br> from the **heuristic argument**
   
   </div>
-</div v-click>
+</div>
 
 :: default ::
 <div class="rounded-lg border-1 border-blue-600 bg-sky-100" v-click>
 
   <div class="ml-4 mt-4">
 
-  **Question**: Fill the "jump" at $k\approx n^{1/3}$.
+  **Question**: Is the "jump" at $k\approx n^{1/3}$ a right bound?
 
   </div>
 </div>
@@ -784,7 +802,8 @@ title: conclusion
 
 ## Open Questions
 - other graph
-- other protocols (e.g., undecided dynamics)
+- other protocols
+  - undecided dynamics
 -  <span v-mark.crossed-off.orange="+2">extend to sync</span> <span v-click="+2"> ... resolved in our upcoming paper </span>
 
 </v-click>

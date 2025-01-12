@@ -95,9 +95,9 @@ layout: two-cols-title
 <v-click at="+4" >
 
 **Properties**:
-- simple & efficient
+- simple
   - just sees one neighbor
-  - async can be implemented in population protocol
+  - async version can be implemented as the population protocol
 
 </v-click>
 
@@ -665,7 +665,8 @@ layout: two-cols-title
 
 - Symmetry breaking due to Voter-like behavior
 - Analogous result of <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/3087801.3087817">[Berenbrink et al. PODC17]</a></span> for sync
-  - Their proof crucially relies on synchronicity
+  - based on Majorization Theory
+  - crucially relies on synchronicity
 - omitted in this talk
 
 </v-clicks>

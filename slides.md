@@ -157,7 +157,7 @@ $20$ colors
 
 <v-clicks>
 
-- convergence is slow even if 90% are purple
+- convergence is slow even if 90% have the same color
 - On $K_n$
   - sync: consensus time = $\Theta(n)$
   - async: consensus time = $\Theta(n^2)$.
@@ -183,8 +183,8 @@ layout: two-cols-title
 <v-click at="+4" >
 
 **Properties**:
-- **rich get richer**: The popular becomes more popular.
-- Colors change rarely in the balanced state.
+- **rich get richer**: A popular color is likely to become more popular.
+- **conservative**: Balanced state keeps balanced for a while.
 
 </v-click>
 
@@ -734,7 +734,7 @@ $$
 
 
 - We need drift $\gg$ standard deviation: $\frac{1}{k^2} \gg \frac{1}{\sqrt{kn}}$ (thus $k \ll n^{1/3}$).
-  - this obstacle is specific to synchronous models
+  - this obstacle is specific to synchronous models. How about async?
 
 </v-clicks>
 
@@ -798,11 +798,19 @@ title: conclusion
 - **technique**: multi-step concentration via Freedman's inequality
   - seemingly useful to explore other protocols
 
-<v-click>
+<v-clicks>
 
 ## Open Questions
 - other graph (e.g., expander)
 - other protocols (e.g., undecided dynamics)
--  <span v-mark.crossed-off.orange="+2">extend to sync</span> <span v-click="+2"> ... resolved in our upcoming paper </span>
+-  <span v-mark.crossed-off.orange="+3">extend to sync?</span> <span v-click="+3"> ... resolved in our upcoming paper </span>
 
-</v-click>
+</v-clicks>
+
+<div v-click="4" align="center">
+
+<span style="color:red">
+Thank You!
+</span>
+
+</div>

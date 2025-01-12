@@ -55,16 +55,21 @@ title: Consensus Dynamics
 
 :: left ::
 
-$n$-vertex graph $G = (V,E)$
-  - each vertex holds a **color (opinion)** from $[k]$
+$n$-vertex graph with each vertex holding a **color (opinion)** from $[k]=\{1,\dots,k\}$
 
 <v-clicks>
 
-At every round, some vertices update their own colors according to a protocol.
-- Goal: reach **consensus** (all vertices gain the same color)
-- **consensus time** $T_{\mathrm{cons}}$ = # of rounds to reach consensus
+- At every round, some vertices update their own colors according to a protocol.
 
-This work focus on complete graphs $K_n$ with self-loops.
+- Goal: reach **consensus** (all vertices gain the same color)
+
+- Interest: **consensus time** $T_{\mathrm{cons}}$
+
+- **synchronous (parallel)**: all vertices update their colors simultaneously
+
+- **asyncronous (sequential)**: one random vertex updates its color
+
+- this work: complete graph $K_n$ with self-loops
 
 </v-clicks>
 
@@ -72,38 +77,6 @@ This work focus on complete graphs $K_n$ with self-loops.
 <SlidevVideo controls autoplay width="350" loop>
   <source src="./images/simulation_movie.mp4" type="video/mp4" />
 </SlidevVideo>
-
----
-color: navy-light
-title: Synchronous and Asynchronous
----
-# Synchronous and Asynchronous
-
-
-Two kinds update schedules: At every round
-<v-click>
-
-  - **synchronous (parallel)**: all vertices simultaneously update their colors
-  <div align="center">
-
-  ![sync](./images/sync.drawio.svg)
-
-  </div>
-</v-click>
-<v-click>
-
-  - **asynchronous (sequential)**: one random vertex updates its color
-
-  <div align="center">
-
-  ![async](./images/async.drawio.svg)
-
-  </div>
-</v-click>
-
-
-
-<!-- TODO insert animation of sync and async update -->
 
 ---
 color: navy-light
@@ -744,6 +717,7 @@ title: proof overview
 
 
 - Suppose the pie chart is nearly balanced (i.e., $\alpha_{t-1}(j) = \Theta(1/k)$ for all $j\in[k]$)
+
 <v-clicks>
 
 - If $\alpha_{t-1}(i)$ is slightly larger than $\frac{1}{k}$ (say, $\alpha_{t-1}(i) = \frac{2}{k}$), then $\mathbb{E}_{t-1}[\alpha_t(i)] = \alpha_{t-1}(i) + \Theta\left(\frac{1}{k^2}\right)$.

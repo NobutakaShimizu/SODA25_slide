@@ -64,12 +64,12 @@ At every round, some vertices update their own colors according to a protocol.
 - Goal: reach **consensus** (all vertices gain the same color)
 - **consensus time** $T_{\mathrm{cons}}$ = # of rounds to reach consensus
 
-This work focus on complete graphs $K_n$.
+This work focus on complete graphs $K_n$ with self-loops.
 
 </v-clicks>
 
 :: right ::
-<SlidevVideo controls width="350">
+<SlidevVideo controls autoplay width="350" loop>
   <source src="./images/simulation_movie.mp4" type="video/mp4" />
 </SlidevVideo>
 

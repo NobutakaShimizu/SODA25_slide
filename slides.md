@@ -81,7 +81,7 @@ title: Synchronous and Asynchronous
 
 
 Two kinds update schedules: At every round
-<v-clicks>
+<v-click>
 
   - **synchronous (parallel)**: all vertices simultaneously update their colors
   <div align="center">
@@ -89,6 +89,8 @@ Two kinds update schedules: At every round
   ![sync](./images/sync.drawio.svg)
 
   </div>
+</v-click>
+<v-click>
 
   - **asynchronous (sequential)**: one random vertex updates its color
 
@@ -97,9 +99,7 @@ Two kinds update schedules: At every round
   ![async](./images/async.drawio.svg)
 
   </div>
-
-
-</v-clicks>
+</v-click>
 
 
 
@@ -635,6 +635,13 @@ layout: two-cols-title
 
 </v-clicks>
 
+---
+color: navy-light
+title: Idea
+layout: intro
+---
+
+# Proof Idea
 
 ---
 color: navy-light

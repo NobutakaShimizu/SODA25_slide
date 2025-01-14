@@ -164,8 +164,8 @@ $20$ colors
 
 - Convergence is slow even if 90% have the same color
 - On $K_n$.
-  - sync: consensus time = $\Theta(n)$
-  - async: consensus time = $\Theta(n^2)$.
+  - sync: consensus time = $\Theta(n\log n)$ whp
+  - async: consensus time = $\Theta(n^2\log n)$ whp
 
 </v-clicks>
 
@@ -743,7 +743,6 @@ $${1|all}
 \end{aligned}
 $$
 
-
 - We need drift $\gg$ standard deviation: $\frac{1}{k^2} \gg \frac{1}{\sqrt{kn}}$ (thus $k \ll n^{1/3}$).
   - This obstacle is specific to synchronous models. How about async?
 
@@ -815,7 +814,7 @@ columns: is-7
   - Overcome "$n^{1/3}$-barrier" in sync
 - Same technique applies to async 2-Choices
 
-## Questions
+## Open Questions
 
 <v-clicks>
 
@@ -830,7 +829,7 @@ columns: is-7
 <div style="text-align: center;">
   <div align="center">
     <img src="./images/tcons_plot_both.svg" style="display: block; margin: 0 auto; width: 100%;" />
-    <span class="text-gray-500" style="font-size: small;">2-Choices (red) and 3-Majority (blue)</span>
+    <span class="text-gray-500" style="font-size: small;">Voter (black), 2-Choices (red), and 3-Majority (blue)</span>
   </div>
 </div>
 

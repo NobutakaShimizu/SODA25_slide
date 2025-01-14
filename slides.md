@@ -736,11 +736,11 @@ title: proof overview
   - increase by $\Theta\left(\frac{1}{k^2}\right)$ (**additive drift**)
 - By Central Limit Theorem, we have
   
-$${1|all}
-\begin{aligned}
+$$
+\begin{align*}
   \alpha_t(i) &= \mathbb{E}_{t-1}[\alpha_t(i)] \underbrace{\pm O \left( \frac{1}{\sqrt{kn}} \right)}_{\text{standard deviation}} \\
               &= \alpha_{t-1}(i) + \underbrace{\Theta\left(\frac{1}{k^2} \right)}_{\text{additive drift}} \pm O \left( \frac{1}{\sqrt{kn}} \right).
-\end{aligned}
+\end{align*}
 $$
 
 - We need drift $\gg$ standard deviation: $\frac{1}{k^2} \gg \frac{1}{\sqrt{kn}}$ (thus $k \ll n^{1/3}$).

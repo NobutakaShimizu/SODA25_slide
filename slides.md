@@ -54,7 +54,8 @@ title: Consensus Dynamics
 # Consensus Dynamics
 
 Consider an $n$-vertex graph with each vertex holding a **color (opinion)** from $[k]=\{1,\dots,k\}$.
-At every round, some vertices update their own colors according to a protocol.
+
+At every discrete-time round, some vertices update their own colors according to a protocol.
 
 :: left ::
 
@@ -76,7 +77,7 @@ At every round, some vertices update their own colors according to a protocol.
 </v-clicks>
 
 :: right ::
-<SlidevVideo controls autoplay width="300" loop style="display: block; margin: 0 auto;">
+<SlidevVideo controls width="300" loop style="display: block; margin: 0 auto;">
   <source src="./images/simulation_movie.mp4" type="video/mp4" />
 </SlidevVideo>
 

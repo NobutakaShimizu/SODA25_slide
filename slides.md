@@ -94,14 +94,17 @@ layout: two-cols-title
 **Update rule**:
 - Pull the copy of a random neighbor.
 
-<v-click at="+4" >
 
 **Properties**:
-- simple
-  - just sees one neighbor
-  - async version can be implemented as the population protocol
 
-</v-click>
+<v-clicks at="+4" >
+
+- Simple: Just sees one neighbor
+  - related to population protocol
+- "dual" of coalescing random walk
+- $T_{\mathrm{cons}} = O(n^3)$ for any connected graph
+
+</v-clicks>
 
 :: right ::
 
@@ -159,8 +162,8 @@ $20$ colors
 
 <v-clicks>
 
-- convergence is slow even if 90% have the same color
-- On $K_n$
+- Convergence is slow even if 90% have the same color
+- On $K_n$.
   - sync: consensus time = $\Theta(n)$
   - async: consensus time = $\Theta(n^2)$.
 
@@ -303,7 +306,7 @@ $100$ colors
 - Early phase: keep balanced
 - After symmetry breaking: rush to convergence
   - rich get richer
-- consensus time can be $\Omega(n/\log n)$ on $K_n$ if $k\approx n$ <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/3087801.3087817">[Berenbrink et al. PODC17]</a></span>
+- Consensus time can be $\Omega(n/\log n)$ on $K_n$ if $k\approx n$ <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/3087801.3087817">[Berenbrink et al. PODC17]</a></span>.
 
 </v-clicks>
 
@@ -324,7 +327,7 @@ layout: two-cols-title
 **Update rule**:
 - Choose two random neighbors (with replacement).
 - <span v-mark.underline.orange="+3">If the two have the same color, pull it.</span>
-- <span v-mark.underline.orange="+4">Otherwise, simulate Voter</span>
+- <span v-mark.underline.orange="+4">Otherwise, simulate Voter.</span>
 
 <v-click at="+5" >
 
@@ -478,11 +481,11 @@ title: What is Known?
 # 3-Majority on $K_n$ (synchronous)
 
 -  <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/2612669.2612677">[Becchetti, Clementi, Natale, Pasquale, Silvestri, Trevisan, SPAA14] </a></span> proved $T_{\mathrm{cons}} = O(k\log n)$ for $k \ll n^{1/3}$ after "symmetry breaking".
-   - They also proved $T_{\mathrm{cons}} = \Omega(k\log n)$ if $k\ll n^{1/4}$ the initial state is balanced.
+   - They also proved $T_{\mathrm{cons}}$ can be $\Omega(k\log n)$ if $k\ll n^{1/4}$.
 
 <v-clicks>
 
-- <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.5555/2884435.2884481">[Becchetti, Clementi, Natale, Pasquale, and Trevisan, SODA16]</a></span> proved $T_{\mathrm{cons}}=\widetilde{O}(k^3)$ for $k\le n^{1/3-\varepsilon}$ for **any** initial state
+- <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.5555/2884435.2884481">[Becchetti, Clementi, Natale, Pasquale, and Trevisan, SODA16]</a></span> proved $T_{\mathrm{cons}}=\widetilde{O}(k^3)$ for $k\le n^{1/3-\varepsilon}$ for **any** initial state.
 - <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/3212734.3212738">[Ghaffari and Lengler, PODC18]</a></span> proved $O(k\log n)$ for $k\ll n^{1/3}$.
 - <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/3087801.3087817">[Berenbrink, Clementi, Elsässer, Kling, Mallmann-Trenn, Natale, PODC17]</a></span> proved that # of remaining colors will be $\widetilde{O}(n/ T)$ after $T$ rounds.
 
@@ -495,7 +498,7 @@ title: What is Known?
     \begin{align*}
       T_{\mathrm{cons}} \le \widetilde{O}(1)\cdot \begin{cases}
         k	& \text{if }k \ll n^{1/3},\\
-        n^{2/3} & \text{otherwise}
+        n^{2/3} & \text{otherwise}.
       \end{cases}
     \end{align*}
   $$
@@ -510,8 +513,8 @@ title: What is Known?
 ---
 # 3-Majority on $K_n$ (asynchronous)
 
-- Intuitively, $(T_{\mathrm{cons}} \text{ in async}) \approx n\cdot  (T_{\mathrm{cons}} \text{ in sync})$
-  - one-round change in sync $\approx$ $n$-round change in async
+- $(T_{\mathrm{cons}} \text{ in async}) \approx n\cdot  (T_{\mathrm{cons}} \text{ in sync})$.
+  - $\because$ one-round change in sync $\approx$ $n$-round change in async (heuristic argument)
   - <span class="text-pink-600"><a href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.OPODIS.2022.23">[Berenbrink, Coja-Oghlan, Gebhard, Hahn-Klimroth, Kaaser, Rau, OPODIS22]</a></span> confirmed this: $T_{\mathrm{cons}} = O(n\log n)$ if $k=2$.
 - The case $k>2$ is unexplored yet.
 
@@ -521,7 +524,7 @@ $$
   \begin{align*}
     T_{\mathrm{cons}} \le \widetilde{O}(n)\cdot \begin{cases}
       k	& \text{if }k \ll n^{1/3},\\
-      n^{2/3} & \text{otherwise}
+      n^{2/3} & \text{otherwise}.
     \end{cases}
   \end{align*}
 $$
@@ -556,7 +559,7 @@ layout: two-cols-title
 ![plot of consensus time](./images/tcons_plot_async.svg)
   <div class="text-gray-500">
   
-  bound for asynchronous model <br> from the **heuristic argument**
+  bound for asynchronous model <br> from the heuristic argument
   
   </div>
 </div>
@@ -604,8 +607,8 @@ layout: two-cols-title
 
 <v-clicks>
 
-- fill the "jump" of previous bounds at $k \approx n^{1/3}$
-- extension to sync model?
+- Fill the "jump" of previous bounds at $k \approx n^{1/3}$
+- Extension to sync model?
   - <span v-mark.crossed-off.orange="+3">left open</span> <span v-click="3"> resolved in our upcoming paper </span>
 
 </v-clicks>
@@ -641,8 +644,8 @@ layout: two-cols-title
 
 <v-clicks>
 
-- previous works consider $k \ll n^{1/3}$ (sync)
-  - "$n^{1/3}$-barrier"
+- Previous works consider $k \ll n^{1/3}$ (sync).
+  - "$n^{1/3}$-barrier" in one-step concentration
 - Most technical part
   - Key tool: Freedman's inequality
   
@@ -667,9 +670,9 @@ layout: two-cols-title
 
 - Symmetry breaking due to Voter-like behavior
 - Analogous result of <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/3087801.3087817">[Berenbrink et al. PODC17]</a></span> for sync
-  - based on Majorization Theory
-  - crucially relies on synchronicity
-- omitted in this talk
+  - Based on Majorization Theory
+  - Crucially relies on synchronicity
+- Omitted in this talk
 
 </v-clicks>
 
@@ -698,7 +701,7 @@ Consider sync 3-Majority on $K_n$.
 
 <v-clicks>
 
-- Let $\alpha_t(i) \in[0,1]$ be the fraction of vertices holding color $i$ at round $t$
+- Let $\alpha_t(i) \in[0,1]$ be the fraction of vertices holding color $i$ at round $t$.
   - fraction of each pie in the pie-chart
 
 - Conditinoed on round $t-1$, $\alpha_t(i)$ = sum of $n$ i.i.d. indicators:
@@ -725,7 +728,7 @@ title: proof overview
 # Why $k\ll n^{1/3}$ in Sync?
 
 
-- Suppose the pie chart is nearly balanced (i.e., $\alpha_{t-1}(j) = \Theta(1/k)$ for all $j\in[k]$)
+- Suppose the pie chart is nearly balanced (i.e., $\alpha_{t-1}(j) = \Theta(1/k)$ for all $j\in[k]$).
 
 <v-clicks>
 
@@ -742,7 +745,7 @@ $$
 
 
 - We need drift $\gg$ standard deviation: $\frac{1}{k^2} \gg \frac{1}{\sqrt{kn}}$ (thus $k \ll n^{1/3}$).
-  - this obstacle is specific to synchronous models. How about async?
+  - This obstacle is specific to synchronous models. How about async?
 
 </v-clicks>
 
@@ -752,19 +755,19 @@ title: proof overview
 ---
 # Our Analysis for Asynchronous Models
 
-We use Martingale Concentration for $\alpha_t(i)$
+We use Martingale Concentration for $\alpha_t(i)$.
 
 <v-clicks>
 
-By calculation, in async, we have $\mathbb{E}_{t-1}[\alpha_t(i)] \gtrsim \alpha_{t-1}(i) + \frac{1}{k^2n}$ (in a nearly-balanced state)
-- Therefore, $\left(\alpha_t(i) - \frac{t}{k^2 n} \right)_{t=0,1,\dots}$ is a submartingale
-- Moreover, $|\alpha_t(i) - \alpha_{t-1}(i)| \le \frac{1}{n}$ due to asynchronicity
+By calculation, in async, we have $\mathbb{E}_{t-1}[\alpha_t(i)] \gtrsim \alpha_{t-1}(i) + \frac{1}{k^2n}$ (in a nearly-balanced state).
+- Therefore, $\left(\alpha_t(i) - \frac{t}{k^2 n} \right)_{t=0,1,\dots}$ is a submartingale.
+- Moreover, $|\alpha_t(i) - \alpha_{t-1}(i)| \le \frac{1}{n}$ due to asynchronicity.
 
 By the Azuma--Hoeffding inequality, we have
 
   $$
     \begin{align*}
-      \alpha_t(i) \gtrsim \alpha_0(i) + \frac{t}{k^2 n} \pm O\left( \sqrt{\frac{t}{n^2}} \right)
+      \alpha_t(i) \gtrsim \alpha_0(i) + \frac{t}{k^2 n} \pm O\left( \sqrt{\frac{t}{n^2}} \right).
     \end{align*}
   $$
 
@@ -778,17 +781,17 @@ title: proof overview
 ---
 # Our Analysis for Asynchronous Models
 
-We use Martingale Concentration for $\alpha_t(i)$
+We use Martingale Concentration for $\alpha_t(i)$.
 
-By calculation, in async, we have $\mathbb{E}_{t-1}[\alpha_t(i)] \gtrsim \alpha_{t-1}(i) + \frac{1}{k^2n}$ (in a nearly-balanced state)
-- Therefore, $\left(\alpha_t(i) - \frac{t}{k^2 n} \right)_{t=0,1,\dots}$ is a submartingale
-- Moreover, $|\alpha_t(i) - \alpha_{t-1}(i)| \le \frac{1}{n}$ due to asynchronicity
+By calculation, in async, we have $\mathbb{E}_{t-1}[\alpha_t(i)] \gtrsim \alpha_{t-1}(i) + \frac{1}{k^2n}$ (in a nearly-balanced state).
+- Therefore, $\left(\alpha_t(i) - \frac{t}{k^2 n} \right)_{t=0,1,\dots}$ is a submartingale.
+- Moreover, $|\alpha_t(i) - \alpha_{t-1}(i)| \le \frac{1}{n}$ due to asynchronicity.
 
 By <span style="color:red" markdown="1">**Freedman's inequality** </span> (Bernstein-type concentration ineq for martingales), we have
 
   $$
     \begin{align*}
-      \alpha_t(i) \gtrsim \alpha_0(i) + \frac{t}{k^2 n} \pm O\left( \sqrt{\frac{t}{\textcolor{red}{k}n^2}} \right)
+      \alpha_t(i) \gtrsim \alpha_0(i) + \frac{t}{k^2 n} \pm O\left( \sqrt{\frac{t}{\textcolor{red}{k}n^2}} \right).
     \end{align*}
   $$
 
@@ -809,8 +812,18 @@ columns: is-7
 :: left ::
 
 - Improved analysis of async 3-Majority on $K_n$
-  - overcome "$n^{1/3}$-barrier" in sync
+  - Overcome "$n^{1/3}$-barrier" in sync
 - Same technique applies to async 2-Choices
+
+## Questions
+
+<v-clicks>
+
+- Other graph (e.g., expander)? 
+- other protocols (e.g., undecided dynamics)
+-  <span v-mark.crossed-off.orange="+4">extend to sync?</span> <span v-click="+4"> ... resolved in our upcoming paper </span>
+
+</v-clicks>
 
 :: right ::
 
@@ -823,19 +836,10 @@ columns: is-7
 
 :: default ::
 
-<v-clicks>
+<div v-click="5" align="center">
 
-## Open Questions
-- other graph (e.g., expander)
-- other protocols (e.g., undecided dynamics)
--  <span v-mark.crossed-off.orange="+3">extend to sync?</span> <span v-click="+3"> ... resolved in our upcoming paper </span>
-
-</v-clicks>
-
-<div v-click="4" align="center">
-
-<span style="color:red">
-Thank You!
-</span>
+<span style="color:red"> Thank You! </span>
 
 </div>
+
+

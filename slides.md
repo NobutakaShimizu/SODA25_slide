@@ -41,7 +41,7 @@ author: Nobutaka Shimizu
 
 :: note ::
 <div class="text-slate-500">
-  @SODA2025
+  14th Jan, SODA2025, New Orleans, USA
 </div>
 
 ---
@@ -65,7 +65,7 @@ At every round, some vertices update their own colors according to a protocol.
 
 - Interest: **consensus time** $T_{\mathrm{cons}}$
 
-- application: distributed computing, chemical reaction network, interactive particle system, etc.
+- application: distributed computing, chemical reaction network, interactive particle system
 
 - **synchronous (parallel)**: all vertices update their colors simultaneously
 

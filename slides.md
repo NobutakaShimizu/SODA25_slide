@@ -784,7 +784,7 @@ By calculation, in async, we have $\mathbb{E}_{t-1}[\alpha_t(i)] \gtrsim \alpha_
 - Therefore, $\left(\alpha_t(i) - \frac{t}{k^2 n} \right)_{t=0,1,\dots}$ is a submartingale
 - Moreover, $|\alpha_t(i) - \alpha_{t-1}(i)| \le \frac{1}{n}$ due to asynchronicity
 
-By the **Freedman's inequality** (Bernstein-type concentration ineq for martingales), we have
+By <span style="color:red" markdown="1">**Freedman's inequality** </span> (Bernstein-type concentration ineq for martingales), we have
 
   $$
     \begin{align*}
@@ -799,7 +799,7 @@ For $t=kn$, we need $\textcolor{red}{\frac{1}{k} \gg \frac{1}{\sqrt{n}}}$; thus 
 color: navy-light
 title: conclusion
 layout: two-cols-title
-columns: is-8
+columns: is-7
 ---
 
 :: title ::
@@ -808,15 +808,17 @@ columns: is-8
 
 :: left ::
 
-- nearly-tight bounds of $T_{\mathrm{cons}}$ of async 3-Majority on $K_n$
+- Improved analysis of async 3-Majority on $K_n$
   - overcome "$n^{1/3}$-barrier" in sync
 - Same technique applies to async 2-Choices
 
 :: right ::
 
 <div style="text-align: center;">
-  <img src="./images/tcons_plot_both.svg" width="400" style="font-size: small;" />
-  <span class="text-gray-500" style="font-size: small;">2-Choices (red) and 3-Majority (blue)</span>
+  <div align="center">
+    <img src="./images/tcons_plot_both.svg" style="display: block; margin: 0 auto; width: 100%;" />
+    <span class="text-gray-500" style="font-size: small;">2-Choices (red) and 3-Majority (blue)</span>
+  </div>
 </div>
 
 :: default ::

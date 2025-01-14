@@ -53,17 +53,19 @@ title: Consensus Dynamics
 :: title ::
 # Consensus Dynamics
 
+Consider an $n$-vertex graph with each vertex holding a **color (opinion)** from $[k]=\{1,\dots,k\}$.
+At every round, some vertices update their own colors according to a protocol.
+
 :: left ::
 
-$n$-vertex graph with each vertex holding a **color (opinion)** from $[k]=\{1,\dots,k\}$
 
 <v-clicks>
-
-- At every round, some vertices update their own colors according to a protocol.
 
 - Goal: reach **consensus** (all vertices gain the same color)
 
 - Interest: **consensus time** $T_{\mathrm{cons}}$
+
+- application: distributed computing, chemical reaction network, interactive particle system, etc.
 
 - **synchronous (parallel)**: all vertices update their colors simultaneously
 
@@ -74,7 +76,7 @@ $n$-vertex graph with each vertex holding a **color (opinion)** from $[k]=\{1,\d
 </v-clicks>
 
 :: right ::
-<SlidevVideo controls autoplay width="350" loop>
+<SlidevVideo controls autoplay width="300" loop style="display: block; margin: 0 auto;">
   <source src="./images/simulation_movie.mp4" type="video/mp4" />
 </SlidevVideo>
 
@@ -475,7 +477,7 @@ title: What is Known?
 ---
 # 3-Majority on $K_n$ (synchronous)
 
--  <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/2612669.2612677">[Becchetti, Clementi, Natale, Pasquale, Silvestri, Trevisan, SPAA14] </a></span> proved $T_{\mathrm{cons}} = O(k\log n)$ for $k \ll n^{1/3}$ if there is a large gap between the most popular color and the other colors.
+-  <span class="text-pink-600"><a href="https://dl.acm.org/doi/10.1145/2612669.2612677">[Becchetti, Clementi, Natale, Pasquale, Silvestri, Trevisan, SPAA14] </a></span> proved $T_{\mathrm{cons}} = O(k\log n)$ for $k \ll n^{1/3}$ after "symmetry breaking".
    - They also proved $T_{\mathrm{cons}} = \Omega(k\log n)$ if $k\ll n^{1/4}$ the initial state is balanced.
 
 <v-clicks>
@@ -639,8 +641,8 @@ layout: two-cols-title
 
 <v-clicks>
 
-- "rich get richer" due to 2-Choices-like behavior
-- For sync, previous works consider $k \ll n^{1/3}$
+- previous works consider $k \ll n^{1/3}$ (sync)
+  - "$n^{1/3}$-barrier"
 - Most technical part
   - Key tool: Freedman's inequality
   
@@ -683,32 +685,38 @@ layout: two-cols-title
 ---
 color: navy-light
 title: proof overview
+layout: two-cols-title
+columns: is-8
 ---
+
+:: title ::
+
 # Why $k\ll n^{1/3}$ in Sync?
 
+::left::
+Consider sync 3-Majority on $K_n$.
 
 <v-clicks>
 
-- Let $\alpha_t(i) \in[0,1]$ be the fraction of vertices holding color $i$
-  - Pie-chart
-  - $\ell^2$-norm: $\|\alpha_t\|^2 = \sum_{i\in[k]}\alpha_t(i)^2$
-- Conditioned on Round $t-1$, we can calculate the expectation of $\alpha_t(i)$ is:
+- Let $\alpha_t(i) \in[0,1]$ be the fraction of vertices holding color $i$ at round $t$
+  - fraction of each pie in the pie-chart
 
-  $$
-    \begin{align*}
-      \mathbb{E}_{t-1}[\alpha_t(i)] = \alpha_{t-1}(i)(1+\alpha_{t-1}(i) - \|\alpha_{t-1}\|^2)   
-    \end{align*}
-  $$
-
-- In sync, $\alpha_t(i)$ = sum of $n$ i.i.d. indicators:
+- Conditinoed on round $t-1$, $\alpha_t(i)$ = sum of $n$ i.i.d. indicators:
   
   $$
     \begin{align*}
       \alpha_t(i)= \frac{1}{n} \sum_{u\in V}\mathbb{1}_{\mathrm{color}_t(u) = i}
     \end{align*}
   $$
+
+  - Concentration via Chernoff/Hoeffding
   
 </v-clicks>
+
+:: right ::
+<SlidevVideo controls width="300" loop autoplay style="display: block; margin: 0 auto;">
+  <source src="./images/Bo3_small.mp4" type="video/mp4" />
+</SlidevVideo>
 
 ---
 color: navy-light
@@ -724,8 +732,7 @@ title: proof overview
 - If $\alpha_{t-1}(i)$ is slightly larger than $\frac{1}{k}$ (say, $\alpha_{t-1}(i) = \frac{2}{k}$), then $\mathbb{E}_{t-1}[\alpha_t(i)] = \alpha_{t-1}(i) + \Theta\left(\frac{1}{k^2}\right)$.
   - increase by $\Theta\left(\frac{1}{k^2}\right)$ (**additive drift**)
 - By Central Limit Theorem, we have
-
-
+  
 $${1|all}
 \begin{aligned}
   \alpha_t(i) &= \mathbb{E}_{t-1}[\alpha_t(i)] \underbrace{\pm O \left( \frac{1}{\sqrt{kn}} \right)}_{\text{standard deviation}} \\
@@ -761,7 +768,7 @@ By the Azuma--Hoeffding inequality, we have
     \end{align*}
   $$
 
-For $t=nk$, we need $\frac{1}{k} \gg \sqrt{\frac{k}{n}}$; thus we need $k \ll n^{1/3}$.
+For $t=kn$, we need $\frac{1}{k} \gg \sqrt{\frac{k}{n}}$; thus we need $k \ll n^{1/3}$.
   
 </v-clicks>
 
@@ -787,6 +794,11 @@ By the **Freedman's inequality** (Bernstein-type concentration ineq for martinga
 
 For $t=kn$, we need $\textcolor{red}{\frac{1}{k} \gg \frac{1}{\sqrt{n}}}$; thus we can address $\textcolor{red}{k \ll \sqrt{n}}$.
 
+<v-click>
+
+**Caution**: Not only the expectation, we also evaluate variance of $\alpha_t(i)$ at every round, making proof more involved.
+
+</v-click>
 
 ---
 color: navy-light

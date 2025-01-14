@@ -794,22 +794,32 @@ By the **Freedman's inequality** (Bernstein-type concentration ineq for martinga
 
 For $t=kn$, we need $\textcolor{red}{\frac{1}{k} \gg \frac{1}{\sqrt{n}}}$; thus we can address $\textcolor{red}{k \ll \sqrt{n}}$.
 
-<v-click>
-
-**Caution**: Not only the expectation, we also evaluate variance of $\alpha_t(i)$ at every round, making proof more involved.
-
-</v-click>
 
 ---
 color: navy-light
 title: conclusion
+layout: two-cols-title
+columns: is-8
 ---
+
+:: title ::
+
 # Conclusion
 
-- nearly-tight bounds of consensus time of async 3-Majority on $K_n$
-  - hold for arbitrary $2\le k \le n$
-- **technique**: multi-step concentration via Freedman's inequality
-  - seemingly useful to explore other protocols
+:: left ::
+
+- nearly-tight bounds of $T_{\mathrm{cons}}$ of async 3-Majority on $K_n$
+  - overcome "$n^{1/3}$-barrier" in sync
+- Same technique applies to async 2-Choices
+
+:: right ::
+
+<div style="text-align: center;">
+  <img src="./images/tcons_plot_both.svg" width="400" style="font-size: small;" />
+  <span class="text-gray-500" style="font-size: small;">2-Choices (red) and 3-Majority (blue)</span>
+</div>
+
+:: default ::
 
 <v-clicks>
 
